@@ -31,3 +31,15 @@ export const getWeather = (town) => async (dispatch) => {
         dispatch({ type: GET_WEATHER, payload: {error: 'Town not found'} })
     }
 }
+
+// get a weather forecast for a custom coordinates from server API
+export const getWeatherCords = (cords) => async (dispatch) => {
+    const API_URL = `http://api.openweathermap.org/data/2.5/weather?lat=${cords.lat}&lon=${cords.long}&units=Metric&appid=b0150d0c9edf7c3f05dd0226a46ed644`
+
+    try {
+        const response = await axios.get(API_URL);
+        dispatch({ type: GET_WEATHER, payload: [response.data] });
+    } catch (error) {
+        dispatch({ type: GET_WEATHER, payload: {error: 'Cannot find a position'} })
+    }
+}

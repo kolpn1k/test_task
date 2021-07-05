@@ -1,12 +1,6 @@
-import { useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 function VerticalBar({ weatherData }) {
-  useEffect(() => {
-    console.log(weatherData);
-    console.log(weatherData.found)
-  }, [weatherData])
-
   return (
     // Check if town exist or was selected
     weatherData.length ? (
